@@ -2,13 +2,18 @@
 #include <iostream>
 #include <math.h>
 
+#include "Menu.h"
+
 using namespace std;
 
-int largura_window = 1280;
-int altura_window = 450;
+int largura_window = 800;
+int altura_window = 600;
 
 int main(void)
 {
+
+
+
 	//sistema de pontuação
 	int pontosJogador = 0;
 	int pontosCPU = 0;
@@ -50,7 +55,14 @@ int main(void)
 
 	InitWindow(largura_window, altura_window, "ping pong do LK");
 	SetTargetFPS(60);	//seta a taxa de quadros por segundo (FPS) para 60
+
 	while (WindowShouldClose() == false && botaoSair == false) {
+		
+		//while (true)
+		//{
+		//	Menu(largura_window, altura_window);
+		//}
+
 
 		// struct dos retangulos CPU e do jogador
 		Rectangle retanguloPlayer{
@@ -205,12 +217,12 @@ int main(void)
 		ClearBackground(DARKGREEN);
 
 		// todas as linhas do campo
-		DrawCircleLines(largura_window/2, 225, 80, WHITE);
-		DrawLine(largura_window/2, 35, largura_window/2, 415, WHITE);
+		DrawCircleLines(largura_window/2, altura_window/2, 120, WHITE);
+		DrawLine(largura_window/2, 35, largura_window/2, 565, WHITE);
 		DrawLine(55, 35, largura_window - 55, 35, WHITE);
-		DrawLine(55, 415, largura_window - 55, 415, WHITE);
-		DrawLine(55, 35, 55, 415, WHITE);
-		DrawLine(largura_window - 55, 35, largura_window - 55, 415, WHITE);
+		DrawLine(55, 565, largura_window - 55, 565, WHITE);
+		DrawLine(55, 35, 55, 565, WHITE);
+		DrawLine(largura_window - 55, 35, largura_window - 55, 565, WHITE);
 
 		//retangulo CPU
 		DrawRectangleV(retanguloCpuPosicao, retanguloCpuTamanho, DARKBLUE);
