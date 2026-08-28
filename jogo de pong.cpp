@@ -9,6 +9,8 @@ using namespace std;
 int largura_window = 800;
 int altura_window = 600;
 
+AcaoMenu acao = AcaoMenu::NENHUMA;
+
 int main(void)
 {
 
@@ -48,7 +50,6 @@ int main(void)
 	Vector2 retanguloCpuPosicao = { largura_window - 15, 225 };
 
 	////botões da GUI UI
-	bool botaoJogar = false;
 	bool botaoMenu = false;
 	bool botaoMusica = false;
 	bool botaoSair = false;
@@ -57,11 +58,26 @@ int main(void)
 	SetTargetFPS(60);	//seta a taxa de quadros por segundo (FPS) para 60
 
 	while (WindowShouldClose() == false && botaoSair == false) {
+
+
 		
-		//while (true)
-		//{
-		//	Menu(largura_window, altura_window);
-		//}
+		
+		while (acao == AcaoMenu::NENHUMA)
+		{
+
+			acao = Menu(largura_window, altura_window);
+
+			if (acao == AcaoMenu::JOGAR)
+			{
+				break;
+			}
+
+			if (acao == AcaoMenu::SAIR)
+			{
+				botaoSair = true;
+			}
+
+		}
 
 
 		// struct dos retangulos CPU e do jogador

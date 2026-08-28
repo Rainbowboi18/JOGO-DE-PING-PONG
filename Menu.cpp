@@ -47,8 +47,7 @@ bool botao::pressionado(Vector2 posicaoMouse, bool mousePressionado)
 }
 
 
-
-void Menu(int largura_window, int altura_window)
+AcaoMenu Menu(int largura_window, int altura_window)
 {
 
 
@@ -60,26 +59,45 @@ void Menu(int largura_window, int altura_window)
 
 	BeginDrawing();
 		ClearBackground(BLACK);
-	Vector2 posicao = {
+	
+Vector2 posicaoStart = 
+{
 	(largura_window / 3.5f),
 	(altura_window / 2)
-	};
+};
 
-	Texture2D fundo = LoadTexture("background.png");
-	botao startbotao("start_button.png", posicao, 0.65f);
+Vector2 posicaoExit = 
+{
+(largura_window / 3.5f),
+(altura_window / 1.5f)
+};
+
+	//Texture2D fundo = LoadTexture("background.png");
+	botao backgound("background.png", { 0, 0 }, 1.0f);
+	botao startbotao("start_button.png", posicaoStart, 0.65f);
+	botao exitBotao("exit_button.png", posicaoExit, 0.65f);
 
 
 	if (startbotao.pressionado(posicaoMouse, IsMouseButtonPressed(MOUSE_LEFT_BUTTON)))
 	{
+
 		std::cout << "\n\n\nBotão pressionado!\n\n\n";
+		return AcaoMenu::JOGAR;
+
 	}
 
-		DrawTexture(fundo, largura_window/2 - fundo.width/2, altura_window/2 - fundo.height/2, WHITE);
+	if (exitBotao.pressionado(posicaoMouse, IsMouseButtonPressed(MOUSE_LEFT_BUTTON)))
+	{
+		return AcaoMenu::SAIR;
+	}
+
+		//DrawTexture(fundo, largura_window/2 - fundo.width/2, altura_window/2 - fundo.height/2, WHITE);
+		backgound.desenhaBotao();
 		startbotao.desenhaBotao();
+		exitBotao.desenhaBotao();
 
 		EndDrawing();
 
-
-
+		return AcaoMenu::NENHUMA;
 
 }

@@ -1,6 +1,5 @@
 #pragma once
-#ifndef MENU_H
-#define MENU_H
+
 
 #include "raylib.h"
 
@@ -21,6 +20,14 @@ private:
 
 };
 
-void Menu(int largura_window, int altura_window);
+enum AcaoMenu
+{
+	NENHUMA,
+	JOGAR,
+	SAIR
+};
 
-#endif
+AcaoMenu Menu(int largura_window, int altura_window);
+
+bool startbotao(botao* startbotao, Vector2 posicaoMouse);
+
